@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Settings - Trait Vision</title>
+</head>
+<body>
+    <header>
+        <h1>Settings</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('seller') }}">Seller</a> <!-- Removed duplicate link -->
+        </nav>
+    </header>
+    <main>
+        <h2>Account Settings</h2>
+        <ul class="settings-options">
+            
+            <li><a href="{{ url_for('privacy') }}" class="button">Privacy</a></li>
+            <li><a href="{{ url_for('help') }}" class="button">Help</a></li>
+            <li><a href="{{ url_for('about') }}" class="button">About</a></li>
+            <li><a href="{{ url_for('logout') }}" class="button">Logout</a></li>
+        </ul>
+    </main>
+</body>
+</html>

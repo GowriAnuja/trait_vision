@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    
+
+
+    <h2>Added Products</h2>
+    <div id="productListHome">
+        {% for added_product in added_products %}
+            <div class="product-item">
+                <h3>{{ added_product.name }}</h3>
+                <p>{{ added_product.description }}</p>
+                <p class="price">Price: {{ added_product.price }}</p>
+                <p>Time Period: {{ added_product.time_period }}</p>
+                <img src="{{ url_for('static', filename=added_product.image) }}" alt="{{ added_product.name }}" class="product-image">
+                <form action="{{ url_for('add_to_cart', product_id=added_product.id) }}" method="POST">
+                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                </form>
+            </div>
+        {% else %}
+            <p>No added products available.</p>
+        {% endfor %}
+    </div>
+
+
+
+
+
+    <header>
+    <div class="AddProductPage">
+        <section id="prodHero" class="hero is-bold">
+            <div class="hero-body color-change-3x">
+                <div class="addProd container">
+                    <h1 class="add-product-title">Add a Product</h1>
+                </div>
+            </div>
+        </section>
+
+    </header>
+
+        <div class="container addProduct">
+            <div class="section mainSection">
+                <div class="box formbox">
+                    <form id="productForm">
+                        <div class="field">
+                            <label class="label">Product Name</label>
+                            <div class="control">
+                                <input class="input is-hovered" type="text" id="productName" placeholder="Product Name" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Product Description</label>
+                            <div class="control">
+                                <input class="input is-hovered" type="text" id="productDescription" placeholder="Description" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Price</label>
+                            <div class="control">
+                                <input class="input is-hovered" type="number" id="productPrice" placeholder="Price" step="0.01" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Time Period</label>
+                            <div class="control">
+                                <input class="input is-hovered" type="text" id="productTimePeriod" placeholder="Time Period" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Product Image</label>
+                            <div class="control">
+                                <input class="input is-hovered" type="file" id="productImage" accept="image/*" />
+                            </div>
+                        </div>
+                        <button class="button is-link" type="submit">Add Product!</button>
+                    </form>
+                </div>
+
+                <!-- Product list -->
+                <div id="productList" class="product-list">
+                    <h2>Added Products:</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="imagePreview"></div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

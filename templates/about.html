@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>About Us - Trait Vision</title>
+</head>
+<body>
+    <header>
+        <h1>About Trait Vision</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('settings') }}">Settings</a></li>
+                <li><a href="{{ url_for('language') }}">Language</a></li>
+                <li><a href="{{ url_for('help') }}">Help</a></li>
+                <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="mission">
+            <h2>Our Mission</h2>
+            <p>At Trait Vision, our mission is to enhance the consumer experience by providing detailed product information and fostering trust between buyers and sellers.</p>
+        </section>
+
+        <section class="vision">
+            <h2>Our Vision</h2>
+            <p>We envision a marketplace where transparency and sustainability are at the forefront of every transaction.</p>
+        </section>
+
+        <section class="values">
+            <h2>Our Values</h2>
+            <ul>
+                <li>Integrity</li>
+                <li>Sustainability</li>
+                <li>Innovation</li>
+                <li>Customer Focus</li>
+            </ul>
+        </section>
+
+        <section class="team">
+            <h2>Meet Our Team</h2>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member1.jpg') }}" alt="Team Member 1">
+                <h3>John Doe</h3>
+                <p>CEO</p>
+                <p>John has over 10 years of experience in the tech industry and is passionate about sustainability.</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member2.jpg') }}" alt="Team Member 2">
+                <h3>Jane Smith</h3>
+                <p>CTO</p>
+                <p>Jane is an expert in software development and leads our technical team.</p>
+            </div>
+            <!-- Add more team members as needed -->
+        </section>
+
+        <section class="history">
+            <h2>Our History</h2>
+            <p>Founded in 2024, Trait Vision has grown from a small startup to a leading platform for sustainable product sourcing.</p>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or would like to get in touch, please reach out to us via our <a href="{{ url_for('contact') }}">contact page</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Trait Vision. All rights reserved.</p>
+    </footer>
+</body>
+</html>

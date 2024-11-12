@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Home - Trait Vision</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Trait Vision</h1>
+        
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+            <a href="{{ url_for('seller') }}">Seller</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+            <a href="{{ url_for('help') }}">Help</a>
+        </nav>
+    </header>
+
+   
+
+
+
+    <main>
+        <h2>Product List</h2>
+       
+
+        <!-- If you need client-side product management, keep this part -->
+        <div id="productListHome"></div>
+
+    </main>
+    <footer>
+        <p>&copy; 2024 Trait Vision. All rights reserved.</p>
+    </footer>
+
+
+
+    
+
+
+    <script>
+        // Optional client-side code to load products from localStorage if needed
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem("products")) || [];
+            const productListHome = document.getElementById("productListHome");
+            productListHome.innerHTML = ''; // Clear existing content
+
+            products.forEach(product => {
+                const productItem = document.createElement("div");
+                productItem.classList.add("product-item");
+                productItem.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p>Price: ${product.price}</p>
+                    <p>Time Period: ${product.timePeriod}</p>
+                    <img src="${product.imageURL}" alt="${product.name}">
+                    <button onclick="addToCart('${product.name}', ${product.price})" >Add to Cart</button>
+                `;
+                productListHome.appendChild(productItem);
+            });
+        }
+        
+
+        function addToCart(productName, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const product = { name: productName, price };
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(`${productName} has been added to your cart!`);
+        }
+        // Load products when the page loads (if needed for client-side)
+        window.onload = function() {
+            loadProducts();
+        };
+
+        
+    </script>
+    <div class="chatbot-container" id="chatbotButton">
+        <div class="chatbot-icon">💬</div>
+    </div>
+
+    <script>
+        document.getElementById('chatbotButton').addEventListener('click', function() {
+            window.location.href = '/chatbot';
+        });
+    </script> 
+
+
+
+
+
+
+
+</body>
+</html>

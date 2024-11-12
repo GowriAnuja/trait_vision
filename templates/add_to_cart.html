@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Your Cart - Trait Vision</title>
+</head>
+<body>
+
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('settings') }}">Settings</a>
+        </nav>
+    </header>
+
+    <main class="cart-container">
+        {% if cart %}
+            <div class="cart-items">
+                <form action="{{ url_for('place_order') }}" method="POST">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                            <tr>
+                                <td>{{ item['product']['name'] }}</td>
+                                <td>
+                                    <form action="{{ url_for('update_cart', product_id=item['product']['id']) }}" method="POST" class="update-form">
+                                        <input type="number" name="quantity" value="{{ item['quantity'] }}" min="1">
+                                        <button type="submit">Update</button>
+                                    </form>
+                                </td>
+                                <td>${{ item['product']['price'] }}</td>
+                                <td>${{ item['product']['price'] * item['quantity'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <h2>Total Price: ${{ total_price }}</h2>
+                    <button type="submit">Place Order</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Your cart is empty.</p>
+            <a href="{{ url_for('home') }}" class="continue-shopping">Continue Shopping</a>
+        {% endif %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Help - Trait Vision</title>
+</head>
+<body>
+    <header>
+        <h1>How Can We Help You?</h1>
+    </header>
+
+    <section>
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <ul>
+            <li>
+                <strong>How do I create an account?</strong>
+                <p>You can create an account by clicking on the 'Sign Up' button on the home page.</p>
+            </li>
+            <li>
+                <strong>How can I change my profile settings?</strong>
+                <p>Go to the settings section to update your profile.</p>
+            </li>
+            <li>
+                <strong>What payment methods do you accept?</strong>
+                <p>We accept various payment methods, including credit cards and PayPal.</p>
+            </li>
+            <!-- Additional FAQs can be added here -->
+        </ul>
+    </section>
+
+    
+
+    <section>
+        <h2>Contact Us</h2>
+        <p>If you still need help, please reach out to our support team at <a href="mailto:support@traitvision.com">support@traitvision.com</a>.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Trait Vision. All rights reserved.</p>
+    </footer>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            text-align: center;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        ul li strong {
+            cursor: pointer;
+            color: #007BFF;
+        }
+        ul li p {
+            display: none;
+            margin-top: 5px;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        document.querySelectorAll("ul li strong").forEach(item => {
+            item.addEventListener("click", () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === "none" ? "block" : "none";
+            });
+        });
+    </script>
+</body>
+</html>

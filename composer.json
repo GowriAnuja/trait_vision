@@ -1,0 +1,10 @@
+{
+    "name": "gowri/trait-vision",
+    "description": "\"A platform for sustainable product verification and marketplace.\"",
+    "type": "project",
+    "require": {
+        "laravel/framework": "^8.0"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev"
+}
